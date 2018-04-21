@@ -3,6 +3,11 @@ Crawls http://www.carreck.com/pictures and downloads all images of a celebrity.
 
 ### Installation
 
+```
+git clone https://github.com/Random-Anon/Carreck-Ripper.git
+```
+or download the zip file
+
 Install the dependencies
 
 ```
