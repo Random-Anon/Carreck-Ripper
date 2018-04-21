@@ -74,7 +74,7 @@ def main(args):
     print('-------------\nBase URL:', BASE_URL)
     print('Pages:', PAGES,'\n-------------\n\n')
 
-    Parallel(n_jobs=multiprocessing.cpu_count()-2)(delayed(crawlURL)(BASE_URL + 'page/' + str(i)) for i in range(1,PAGES+1))
+    Parallel(n_jobs=args.cpu_count)(delayed(crawlURL)(BASE_URL + 'page/' + str(i)) for i in range(1,PAGES+1))
 
 
 if __name__ == '__main__':
@@ -82,7 +82,8 @@ if __name__ == '__main__':
   parser.add_argument( "base_url", type=str, help='URL of first page.')
   parser.add_argument( "pages" , type=int, help='Number of Pages to crawl.')
   parser.add_argument('-c', '--cpuCount',
-                            default=6,
-                            dest='cpu_count',
-                            help='Number of threads to run the process on.')
+                      default=6,
+                      type=int,
+                      dest='cpu_count',
+                      help='Number of threads to run the process on.')
   main( parser.parse_args() )
